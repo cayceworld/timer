@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import FormattedTime from './components/FormatedTime/FormattedTime';
 import Container from './components/Container/Container';
-import styles from './styles/app.scss';
-
+import Button from './components/Button/Button';
 
 const App = () => {
 
@@ -18,18 +17,19 @@ const App = () => {
 
   const start = () => {
     setTimer(setInterval(() => {
-      setTime(prevValue => prevValue + 1);
-    }, 1000))
+      setTime(prevValue => prevValue + 0.01);
+    }, 10))
   };
 
 
   const stop = () => {
     clearInterval(timer);
+    setTimer();
   }
 
   useEffect(() => {
     return () => {
-       if(timer) clearInterval(time);
+      if (timer) clearInterval(timer);
     };
   }, []);
 
@@ -38,11 +38,9 @@ const App = () => {
   return (
     <Container>
       <FormattedTime>{time}</FormattedTime>
-      
-      <button className='button' onClick={start}>start</button>
-      <button className='button' onClick={stop}>stop</button>
-      <button className='button' onClick={reset}>reset</button>
-
+      <Button value={start}>start</Button>
+      <Button value={stop}>stop</Button>
+      <Button value={reset}>reset</Button>
     </Container>
   );
 }

@@ -1,4 +1,4 @@
-@import './settings.scss';
+@import '../../styles/settings.scss';
 
 .button {
   background: $color-success;
@@ -35,4 +35,7 @@
           color: darken($color-light, 20%);
       }
   }
+}
+.button_wrapper{
+  display: inline;
 }
